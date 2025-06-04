@@ -110,12 +110,12 @@ public:
 				tsl::hlp::requestForeground(false);
 			}
 
-			u32 base_y = 3;
+			u32 base_y = 0;
 			if (settings.setPosBottom) {
 				base_y = tsl::cfg::FramebufferHeight - (fontsize + (fontsize / 4));
 			}
 
-			//renderer->drawRect(0, base_y, tsl::cfg::FramebufferWidth, fontsize + (fontsize / 4), a(settings.backgroundColor));
+			renderer->drawRect(0, base_y, tsl::cfg::FramebufferWidth, fontsize + (fontsize / 4), a(settings.backgroundColor));
 
 			uint32_t offset = 0;
 			if (settings.alignTo == 1) {
