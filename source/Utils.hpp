@@ -27,9 +27,6 @@ extern "C"
 #define FieldDescriptor uint32_t
 #define BASE_SNS_UOHM 5000
 
-static bool fixHiding = false;
-
-
 //Common
 Thread t0;
 Thread t1;
@@ -791,38 +788,8 @@ uint64_t MapButtons(const std::string& buttonCombo) {
 }
 
 ALWAYS_INLINE bool isKeyComboPressed(uint64_t keysHeld, uint64_t keysDown) {
-    if ((keysHeld & comboBitmask) == comboBitmask) {
-		fixHiding = true; // for fixing hiding when returning
-		return true; // Return false until released
-    }
-
-    return false; // Default return if conditions are not met
+    return (keysHeld == comboBitmask) && ((keysDown & comboBitmask) != 0);
 }
-
-// Helper function to check if comboBitmask is satisfied with at least one key in keysDown and the rest in keysHeld
-bool isKeyComboPressed2(uint64_t keysDown, uint64_t keysHeld) {
-    uint64_t requiredKeys = comboBitmask;
-    bool hasKeyDown = false; // Tracks if at least one key is in keysDown
-
-    // Iterate over each bit in the comboBitmask
-    while (requiredKeys) {
-        uint64_t keyBit = requiredKeys & ~(requiredKeys - 1); // Get the lowest bit set in requiredKeys
-
-        // Check if the key is in keysDown or keysHeld
-        if (keysDown & keyBit) {
-            hasKeyDown = true; // Found at least one key in keysDown
-        } else if (!(keysHeld & keyBit)) {
-            return false; // If the key is neither in keysDown nor keysHeld, the combo is incomplete
-        }
-
-        // Remove the lowest bit and continue to check other keys
-        requiredKeys &= ~keyBit;
-    }
-
-    // Ensure that at least one key was in keysDown and the rest were in keysHeld
-    return hasKeyDown;
-}
-
 
 // Custom utility function for parsing an ini file
 void ParseIniFile() {

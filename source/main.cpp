@@ -56,15 +56,10 @@ public:
 	virtual void update() override {}
 
 	virtual bool handleInput(u64 keysDown, u64 keysHeld, const HidTouchState &touchPos, HidAnalogStickState joyStickPosLeft, HidAnalogStickState joyStickPosRight) override {
-		if (fixHiding) {
-			if (isKeyComboPressed2(keysDown, keysHeld)) {
-				tsl::Overlay::get()->hide();
-				fixHiding = false;
-				return true;
-			}
-		}
-
-		if (keysDown & KEY_B) {
+		if (isKeyComboPressed(keysHeld, keysDown)) {
+			tsl::Overlay::get()->hide();
+			return true;
+		} else if (keysDown & KEY_B) {
 			tsl::goBack();
 			return true;
 		}
@@ -121,15 +116,10 @@ public:
 	virtual void update() override {}
 
 	virtual bool handleInput(u64 keysDown, u64 keysHeld, const HidTouchState &touchPos, HidAnalogStickState joyStickPosLeft, HidAnalogStickState joyStickPosRight) override {
-		if (fixHiding) {
-			if (isKeyComboPressed2(keysDown, keysHeld)) {
-				tsl::Overlay::get()->hide();
-				fixHiding = false;
-				return true;
-			}
-		}
-
-		if (keysDown & KEY_B) {
+		if (isKeyComboPressed(keysHeld, keysDown)) {
+			tsl::Overlay::get()->hide();
+			return true;
+		} else if (keysDown & KEY_B) {
 			tsl::goBack();
 			return true;
 		}
@@ -225,16 +215,10 @@ public:
 	}
 
 	virtual bool handleInput(u64 keysDown, u64 keysHeld, const HidTouchState &touchPos, HidAnalogStickState joyStickPosLeft, HidAnalogStickState joyStickPosRight) override {
-		
-		if (fixHiding) {
-			if (isKeyComboPressed2(keysDown, keysHeld)) {
-				tsl::Overlay::get()->hide();
-				fixHiding = false;
-				return true;
-			}
-		}
-
-		if (keysDown & KEY_B) {
+		if (isKeyComboPressed(keysHeld, keysDown)) {
+			tsl::Overlay::get()->hide();
+			return true;
+		} else if (keysDown & KEY_B) {
 			tsl::goBack();
 			return true;
 		}

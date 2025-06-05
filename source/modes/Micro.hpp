@@ -115,7 +115,7 @@ public:
 				base_y = tsl::cfg::FramebufferHeight - (fontsize + (fontsize / 4));
 			}
 
-			renderer->drawRect(0, base_y, tsl::cfg::FramebufferWidth, fontsize + (fontsize / 4), a(settings.backgroundColor));
+			//renderer->drawRect(0, base_y, tsl::cfg::FramebufferWidth, fontsize + (fontsize / 4), a(settings.backgroundColor));
 
 			uint32_t offset = 0;
 			if (settings.alignTo == 1) {
