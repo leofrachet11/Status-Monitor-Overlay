@@ -1248,7 +1248,7 @@ ALWAYS_INLINE void GetConfigSettings(FpsCounterSettings* settings) {
 	convertStrToRGBA4444("#1117", &(settings -> backgroundColor));
 	convertStrToRGBA4444("#FFFF", &(settings -> textColor));
 	settings -> setPos = 0;
-	settings -> refreshRate = 31;
+	settings -> refreshRate = 4;
 
 	FILE* configFileIn = fopen("sdmc:/config/status-monitor/config.ini", "r");
 	if (!configFileIn)
@@ -1332,7 +1332,7 @@ ALWAYS_INLINE void GetConfigSettings(FpsGraphSettings* settings) {
 	convertStrToRGBA4444("#FFFF", &(settings -> mainLineColor));
 	convertStrToRGBA4444("#F0FF", &(settings -> roundedLineColor));
 	convertStrToRGBA4444("#0C0F", &(settings -> perfectLineColor));
-	settings -> refreshRate = 31;
+	settings -> refreshRate = 30;
 
 	FILE* configFileIn = fopen("sdmc:/config/status-monitor/config.ini", "r");
 	if (!configFileIn)
