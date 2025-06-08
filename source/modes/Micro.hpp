@@ -110,7 +110,7 @@ public:
 				tsl::hlp::requestForeground(false);
 			}
 
-			u32 base_y = 3;
+			u32 base_y = 0;
 			if (settings.setPosBottom) {
 				base_y = tsl::cfg::FramebufferHeight - (fontsize + (fontsize / 4));
 			}
